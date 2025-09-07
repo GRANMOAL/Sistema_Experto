@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="jumbotron bg-primary text-white p-5 rounded mb-4">
+            <h1 class="display-4"><i class="fas fa-robot"></i> Sistema Experto Hardware</h1>
+            <p class="lead">Sistema para entrenar y usar modelos de Machine Learning para predicción de rendimiento de hardware</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-dumbbell text-primary"></i> GUI 1: Entrenar Modelos</h5>
+                <p class="card-text">
+                    Sube un archivo CSV, selecciona el modelo (ID3 o KNN), configura los parámetros de validación y entrena tu modelo.
+                </p>
+                <h6>Funcionalidades:</h6>
+                <ul>
+                    <li>Carga de archivos CSV</li>
+                    <li>Selección de modelo (ID3/KNN)</li>
+                    <li>Configuración de Hold-out o K-Folds</li>
+                    <li>Entrenamiento y evaluación</li>
+                </ul>
+                <a href="{{ url_for('train_model') }}" class="btn btn-primary">
+                    <i class="fas fa-play"></i> Entrenar Modelo
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-crystal-ball text-success"></i> GUI 2: Realizar Predicciones</h5>
+                <p class="card-text">
+                    Introduce las características del hardware y obtén predicciones usando los modelos entrenados.
+                </p>
+                <h6>Características requeridas:</h6>
+                <ul>
+                    <li>MYCT - Tiempo de ciclo de máquina</li>
+                    <li>MMAX - Memoria principal máxima</li>
+                    <li>CACH - Memoria caché</li>
+                    <li>CHMAX - Canales máximos</li>
+                    <li>ERP - Rendimiento relativo estimado</li>
+                </ul>
+                <a href="{{ url_for('predict') }}" class="btn btn-success">
+                    <i class="fas fa-search"></i> Hacer Predicción
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-info-circle text-info"></i> Información Adicional</h5>
+                <p>Para más información sobre los modelos y las características, visita la sección de información.</p>
+                <a href="{{ url_for('info') }}" class="btn btn-info">
+                    <i class="fas fa-book"></i> Ver Información
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
